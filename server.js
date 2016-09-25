@@ -88,6 +88,16 @@ app.get("/counter", function(req,res) {
    res.send(counter.toString());
 });
 
+var names = [];
+app.get('/submit-name/:name',function(req,res) {
+ // Get the name from the request
+ var name = req.params.name; //TODO
+ 
+ names.push(name);
+ // JSON: JavaScript Object Notation
+ res.send(JSON.stringify(names));
+});
+
 app.get('/:articleName',function(req,res) { 
     //articleName=article-one
     //articles[articleName] = {} content object for article one
@@ -107,15 +117,6 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
-var names = [];
-app.get('/submit-name/:name',function(req,res) {
- // Get the name from the request
- var name = req.params.name; //TODO
- 
- names.push(name);
- // JSON: JavaScript Object Notation
- res.send(JSON.stringify(names));
-});
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
