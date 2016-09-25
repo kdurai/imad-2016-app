@@ -92,7 +92,7 @@ app.get('/:articleName',function(req,res) {
     //articleName=article-one
     //articles[articleName] = {} content object for article one
     var articleName = req.params.articleName;
-    res.send(createTemplate(articles[articleName]))
+    res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
@@ -107,12 +107,14 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
-var names[];
-app.get('/submit-name',function(req,res) {
+var names = [];
+app.get('/submit-name/:name',function(req,res) {
  // Get the name from the request
- var name; //TODO
+ var name = req.params.name; //TODO
+ 
  names.push(name);
- res.send(names);
+ // JSON: JavaScript Object Notation
+ res.send(JSON.stringfy(names));
 });
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
