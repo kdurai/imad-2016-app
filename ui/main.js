@@ -31,11 +31,13 @@ button.onclick = function() {
     
 };
 
-// Submit name
-var nameInput = document.getElementById("name");
-var name = nameInput.value;
+// Submit button
 var submit = document.getElementById("submit_btn");
 submit.onclick = function() {
+    // Submit name    
+    var nameInput = document.getElementById("name");
+    var name = nameInput.value;
+
   // Make request to the server and send the name
     var request = new XMLHttpRequest();
     
